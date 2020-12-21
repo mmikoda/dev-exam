@@ -10,9 +10,11 @@ class HousesController < ApplicationController
 
   def new
     @house = House.new
+    @house.stations.build
   end
 
   def edit
+    @house.stations.build
   end
 
   def create
@@ -55,6 +57,6 @@ class HousesController < ApplicationController
     end
 
     def house_params
-      params.require(:house).permit(:name, :rent, :address, :age, :remark)
+      params.require(:house).permit(:name, :rent, :address, :age, :remark, stations_attributes: {} )
     end
 end

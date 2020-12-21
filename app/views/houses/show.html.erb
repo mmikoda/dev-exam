@@ -1,29 +1,6 @@
-<p id="notice"><%= notice %></p>
+<h1>物件詳細</h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @house.name %>
-</p>
+<%= render 'form', house: @house %>
 
-<p>
-  <strong>Rent:</strong>
-  <%= @house.rent %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @house.address %>
-</p>
-
-<p>
-  <strong>Age:</strong>
-  <%= @house.age %>
-</p>
-
-<p>
-  <strong>Remark:</strong>
-  <%= @house.remark %>
-</p>
-
-<%= link_to 'Edit', edit_house_path(@house) %> |
-<%= link_to 'Back', houses_path %>
+<%= link_to '編集', edit_house_path(@house) %> |
+<%= link_to '戻る', houses_path %>

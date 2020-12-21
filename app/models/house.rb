@@ -3,6 +3,6 @@ class House < ApplicationRecord
   validates :rent, presence: true
   validates :address, presence: true
   validates :age, presence: true
-  has_many :stations
-  accepts_nested_attributes_for :stations
+  has_many :stations, dependent: :destroy
+  accepts_nested_attributes_for :stations, reject_if: :all_blank
 end
