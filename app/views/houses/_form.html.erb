@@ -12,45 +12,45 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :物件名 %>
+    <%= form.label :name, "物件名" %>
     <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :賃料 %>
+    <%= form.label :rent, "賃料" %>
     <%= form.number_field :rent %>円
   </div>
 
   <div class="field">
-    <%= form.label :住所 %>
+    <%= form.label :address, "住所" %>
     <%= form.text_field :address %>
   </div>
 
   <div class="field">
-    <%= form.label :築年数 %>
+    <%= form.label :age, "築年数" %>
     <%= form.number_field :age %>年
   </div>
 
   <div class="field">
-    <%= form.label :備考 %>
+    <%= form.label :remark, "備考" %>
     <%= form.text_area :remark %>
   </div>
 
-  <%= form.fields_for :stations do |station| %>
+  <%= form.fields_for :stations do |station_form| %>
     <h2>最寄駅<%= station.index + 1 %></h2>
     <div class="field">
-      <%= station.label :路線名 %>
-      <%= station.text_field :route_name %>
+      <%= form.label :route_name, "路線名" %>
+      <%= form.text_field :route_name %>
     </div>
 
     <div class="field">
-      <%= station.label :駅名 %>
-      <%= station.text_field :station_name %>
+      <%= form.label :station_name, "駅名" %>
+      <%= form.text_field :station_name %>
     </div>
 
     <div class="field">
-      <%= station.label :徒歩分数 %>
-      <%= station.text_field :minuites %>分
+      <%= form.label :minuites, "徒歩分数" %>
+      <%= form.text_field :minuites %>分
     </div>
 
     <div class="delete_station"></div>

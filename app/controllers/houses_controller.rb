@@ -10,7 +10,7 @@ class HousesController < ApplicationController
 
   def new
     @house = House.new
-    @house.stations.build
+    2.times { @house.stations.build }
   end
 
   def edit
@@ -45,6 +45,7 @@ class HousesController < ApplicationController
 
   def destroy
     @house.destroy
+    binding.pry
     respond_to do |format|
       format.html { redirect_to houses_url, notice: 'House was successfully destroyed.' }
       format.json { head :no_content }
@@ -57,6 +58,6 @@ class HousesController < ApplicationController
     end
 
     def house_params
-      params.require(:house).permit(:name, :rent, :address, :age, :remark, stations_attributes: {} )
+      params.require(:house).permit(:name, :rent, :address, :age, :remark, :houseted_at, stations_attributes: [:route_name, :station_name, :minuites, :house_id, :id, :_destroy] )
     end
 end
