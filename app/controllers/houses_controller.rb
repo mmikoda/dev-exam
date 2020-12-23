@@ -45,7 +45,6 @@ class HousesController < ApplicationController
 
   def destroy
     @house.destroy
-    binding.pry
     respond_to do |format|
       format.html { redirect_to houses_url, notice: 'House was successfully destroyed.' }
       format.json { head :no_content }

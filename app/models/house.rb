@@ -4,7 +4,7 @@ class House < ApplicationRecord
   validates :address, presence: true
   validates :age, presence: true
   has_many :stations, dependent: :destroy
-  accepts_nested_attributes_for :stations, reject_if: :reject_both_blank, allow_destroy: true
+  accepts_nested_attributes_for :stations, reject_if: :reject_blank, allow_destroy: true
 
   def reject_blank(attributes)
     if attributes[:id]
