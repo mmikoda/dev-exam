@@ -1,6 +1,63 @@
 <h1>物件詳細</h1>
 
-<%= render 'form', house: @house %>
+<%= form_with(model: @house, local: true) do |form| %>
+  <% if @house.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(house.errors.count, "error") %> prohibited this house from being saved:</h2>
+  
+      <ul>
+      <% house.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= form.label :name, "物件名" %>
+    <%= form.text_field :name %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :rent, "賃料" %>
+    <%= form.number_field :rent %>円
+  </div>
+  
+  <div class="field">
+    <%= form.label :address, "住所" %>
+    <%= form.text_field :address %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :age, "築年数" %>
+    <%= form.number_field :age %>年
+  </div>
+  
+  <div class="field">
+    <%= form.label :remark, "備考" %>
+    <%= form.text_area :remark %>
+  </div>
+  
+  <%= form.fields_for :stations do |station| %>
+    <h2>最寄駅<%= station.index + 1 %></h2>
+    <div class="field">
+      <%= station.label :route_name, "路線名" %>
+      <%= station.text_field :route_name %>
+    </div>
+  
+    <div class="field">
+      <%= station.label :station_name, "駅名" %>
+      <%= station.text_field :station_name %>
+    </div>
+  
+    <div class="field">
+      <%= station.label :minuites, "徒歩分数" %>
+      <%= station.text_field :minuites %>分
+    </div>
+  
+    <div class="delete_station"></div>
+  <% end %>
+<% end %>
 
 <%= link_to '編集', edit_house_path(@house) %> |
 <%= link_to '戻る', houses_path %>
